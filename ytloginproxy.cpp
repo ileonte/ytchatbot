@@ -65,7 +65,12 @@ void YTLoginProxy::loadStarted()
 void YTLoginProxy::loadFinished(bool ok)
 {
 	qDebug() << QTime::currentTime() <<"LOAD FINISHED " << ok << loginPage_->url().host().toLower();
-	loginTimer_->start(3000);
+	if (ok) {
+		if (!operation_.isEmpty())
+			loginTimer_->start(3000);
+	} else {
+		emit loginStatus(false);
+	}
 }
 
 void YTLoginProxy::signalBusy()
@@ -118,4 +123,18 @@ void YTLoginProxy::login()
 {
 	operation_ = "login";
 	loginPage_->load(QUrl("qrc:///ythelpers/empty.html"));
+}
+
+void YTLoginProxy::logout()
+{
+	operation_ = "logout";
+	loginPage_->load(QUrl("qrc:///ythelpers/empty.html"));
+}
+
+void YTLoginProxy::cancel()
+{
+	if (!operation_.isEmpty()) {
+		operation_ = QString();
+		loginPage_->load(QUrl("qrc:///ythelpers/empty.html"));
+	}
 }

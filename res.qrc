@@ -5,5 +5,7 @@
         <file>ythelpers/spinner.html</file>
         <file>ythelpers/empty.html</file>
         <file>ythelpers/loginProxy/helper.js</file>
+        <file>ythelpers/offline.png</file>
+        <file>ythelpers/online.png</file>
     </qresource>
 </RCC>

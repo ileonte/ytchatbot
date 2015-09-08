@@ -52,7 +52,36 @@
 					location.href = "https://www.youtube.com";
 					return;
 				}
+				return;
 			}
+
+			if (operation == "testLogin") {
+				if (location.host.match(/\.youtube\.com/)) {
+					if (checkYoutubeLogin())
+						loginProxy.signalLoginStatus(true);
+	                        else
+						loginProxy.signalLoginStatus(false);
+	                  } else {
+					loginProxy.log("Redirecting to youtube");
+					location.href = "https://www.youtube.com";
+					return;
+	                  }
+	                  return;
+	            }
+
+			if (operation == "logout") {
+				if (location.host.match(/\.youtube\.com/)) {
+					if (checkYoutubeLogin())
+						loginProxy.signalLoginStatus(true);
+	                        else
+						loginProxy.signalLoginStatus(false);
+	                  } else {
+					loginProxy.log("Redirecting to youtube");
+					location.href = "https://www.youtube.com/logout";
+					return;
+	                  }
+	                  return;
+	            }
 		});
 	}
 })(jQuery);

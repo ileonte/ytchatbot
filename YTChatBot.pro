@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     youtubelogin.cpp \
     ytloginproxy.cpp \
-    utils.cpp
+    utils.cpp \
+    ytloginstatuswidget.cc
 
 HEADERS  += mainwindow.h \
     youtubelogin.h \
     ytloginproxy.h \
-    utils.h
+    utils.h \
+    ytloginstatuswidget.h
 
 RESOURCES += \
     res.qrc

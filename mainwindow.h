@@ -5,6 +5,7 @@
 #include <QVariant>
 
 class YoutubeLogin;
+class YTLoginStatusWidget;
 
 class MainWindow : public QWidget
 {
@@ -12,6 +13,7 @@ class MainWindow : public QWidget
 
 private:
 	YoutubeLogin *login_;
+	YTLoginStatusWidget *loginStatus_;
 
 public:
 	MainWindow(QWidget *parent = 0);

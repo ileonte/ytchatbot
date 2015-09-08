@@ -38,6 +38,8 @@ public:
 
 	Q_SLOT void testLogin();
 	Q_SLOT void login();
+	Q_SLOT void logout();
+	Q_SLOT void cancel();
 
 	Q_INVOKABLE void log(const QString &msg);
 
