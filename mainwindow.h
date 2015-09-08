@@ -6,6 +6,7 @@
 
 class YoutubeLogin;
 class YTLoginStatusWidget;
+class YTChatProxy;
 
 class MainWindow : public QWidget
 {
@@ -14,10 +15,11 @@ class MainWindow : public QWidget
 private:
 	YoutubeLogin *login_;
 	YTLoginStatusWidget *loginStatus_;
+	YTChatProxy *chatProxy_;
 
 public:
 	MainWindow(QWidget *parent = 0);
-	~MainWindow();
+	virtual ~MainWindow();
 };
 
 #endif // MAINWINDOW_H

@@ -10,7 +10,6 @@
 #include <QJsonDocument>
 #include <QTimer>
 #include <QTime>
-#include <QStandardPaths>
 
 #include "utils.h"
 
@@ -27,13 +26,7 @@ YTLoginProxy::YTLoginProxy(QObject *parent) : QObject(parent)
 	loginChannel_ = new QWebChannel(this);
 	loginChannel_->registerObject("loginProxy", this);
 
-	QString loc = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
-	qDebug() << "WRITABLE LOCATION" << loc;
-	loginProfile_ = new QWebEngineProfile("TestProfile", this);
-	loginProfile_->setPersistentStoragePath(loc + "/Profiles/TestProfile/WebData");
-	loginProfile_->setCachePath(loc + "/Profiles/TestProfile/WebCache");
-	loginProfile_->setHttpCacheType(QWebEngineProfile::DiskHttpCache);
-	loginProfile_->setPersistentCookiesPolicy(QWebEngineProfile::AllowPersistentCookies);
+	loginProfile_ = Utils::browerProfile(this);
 
 	loginPage_ = new QWebEnginePage(loginProfile_, this);
 	loginPage_->setWebChannel(loginChannel_);
@@ -67,7 +60,7 @@ void YTLoginProxy::loadFinished(bool ok)
 	qDebug() << QTime::currentTime() <<"LOAD FINISHED " << ok << loginPage_->url().host().toLower();
 	if (ok) {
 		if (!operation_.isEmpty())
-			loginTimer_->start(3000);
+			loginTimer_->start(2000);
 	} else {
 		emit loginStatus(false);
 	}

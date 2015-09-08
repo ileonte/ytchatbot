@@ -7,5 +7,6 @@
         <file>ythelpers/loginProxy/helper.js</file>
         <file>ythelpers/offline.png</file>
         <file>ythelpers/online.png</file>
+        <file>ythelpers/chatProxy/helper.js</file>
     </qresource>
 </RCC>

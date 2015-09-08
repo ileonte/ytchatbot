@@ -1,13 +1,21 @@
 #include <QHBoxLayout>
 #include <QPushButton>
+#include <QDebug>
 
 #include "mainwindow.h"
 #include "youtubelogin.h"
 #include "ytloginstatuswidget.h"
+#include "ytchatproxy.h"
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
 	login_ = new YoutubeLogin();
+	chatProxy_ = new YTChatProxy(this);
+	connect(login_, &YoutubeLogin::stateChanged, [this](){
+		qDebug() << "Logged in";
+		if (login_->state() == YoutubeLogin::LoggedIn)
+			chatProxy_->connectToChat();
+	});
 
 	auto l = new QHBoxLayout(this);
 

@@ -84,6 +84,7 @@ void YoutubeLogin::login()
 		emit stateChanged();
 
 		loginProxy_->login();
+		show();
 	}
 }
 
