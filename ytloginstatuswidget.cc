@@ -14,6 +14,7 @@ YTLoginStatusWidget::YTLoginStatusWidget(QWidget *parent) : QWidget(parent)
 	iconLabel_ = new QLabel(this);
 	iconLabel_->setMaximumSize(32, 32);
 	iconLabel_->setMinimumSize(32, 32);
+	iconLabel_->setScaledContents(true);
 	layout->addWidget(iconLabel_);
 
 	textLabel_ = new QLabel(this);
