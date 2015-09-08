@@ -17,8 +17,8 @@ SOURCES += main.cpp\
     youtubelogin.cpp \
     ytloginproxy.cpp \
     utils.cpp \
-    ytloginstatuswidget.cc \
-    ytchatproxy.cpp
+    ytchatproxy.cpp \
+    ytloginstatuswidget.cpp
 
 HEADERS  += mainwindow.h \
     youtubelogin.h \

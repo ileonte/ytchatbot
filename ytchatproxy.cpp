@@ -2,8 +2,9 @@
 #include <QWebEnginePage>
 #include <QWebChannel>
 #include <QDebug>
-#include <QTimer>
 #include <QTime>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 #include "ytchatproxy.h"
 #include "utils.h"
@@ -13,10 +14,6 @@ YTChatProxy::YTChatProxy(QObject *parent) : QObject(parent)
 	jsHelper_ = QString::fromUtf8(Utils::readFile(":/ythelpers/jquery.js")) + "\n" +
 			QString::fromUtf8(Utils::readFile(":/qtwebchannel/qwebchannel.js")) + "\n" +
 			QString::fromUtf8(Utils::readFile(":/ythelpers/chatProxy/helper.js"));
-
-	chatTimer_ = new QTimer(this);
-	chatTimer_->setSingleShot(true);
-	connect(chatTimer_, &QTimer::timeout, this, &YTChatProxy::runJSHelper);
 
 	chatChannel_ = new QWebChannel(this);
 	chatChannel_->registerObject("chatProxy", this);
@@ -41,21 +38,18 @@ void YTChatProxy::loadStarted()
 void YTChatProxy::loadFinished(bool ok)
 {
 	qDebug() << QTime::currentTime() <<"LOAD FINISHED " << ok << chatPage_->url().host().toLower();
-	if (ok)
-		runJSHelper();
-}
-
-void YTChatProxy::runJSHelper()
-{
-	if (!jsHelper_.isEmpty()) {
-		qDebug() << "Running JSHelper";
+	if (ok && !jsHelper_.isEmpty())
 		chatPage_->runJavaScript(jsHelper_ + QString("\nwindow.ytChatHelper();"));
-	}
 }
 
 void YTChatProxy::log(const QString &msg)
 {
 	qDebug() << QTime::currentTime() << "JavaScript:" << msg;
+}
+
+void YTChatProxy::chatMessage(const QString &msg)
+{
+	qDebug() << QTime::currentTime() << QJsonDocument::fromJson(msg.toUtf8()).object();
 }
 
 void YTChatProxy::connectToChat()

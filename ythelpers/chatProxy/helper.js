@@ -13,13 +13,25 @@
 				return;
 			}
 
-			var chatContainer = $("#comments-scroller #all-comments");
-			console.log(chatContainer);
-			var chatMessages = chatContainer.children(".comment");
-			console.log(chatMessages);
-			chatProxy.log("Found " + chatMessages.length + " comments");
-//			chatContainer.bind("DOMNodeInserted", function(e) {
-//			});
+			$("#comments-scroller #all-comments").bind("DOMNodeInserted", function(e) {
+				var qe = $(e.target);
+				var msg;
+
+				if (qe.hasClass("removed")) {
+					msg = {
+						"id": qe.attr('id'),
+						"removed": true
+					};
+				} else {
+					msg = {
+						"id": qe.attr('id'),
+						"removed": false,
+						"author": qe.children(".content").children(".byline").children(".author").children(".yt-user-name").text(),
+						"message": qe.children(".content").children(".comment-text").text()
+					};
+				}
+				chatProxy.chatMessage(JSON.stringify(msg));
+			});
 		});
 	}
 })(jQuery);
