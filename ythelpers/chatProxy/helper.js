@@ -9,7 +9,7 @@
 
 			if (!location.href.match(/https?:\/\/www\.youtube\.com\/live_chat\?v=/)) {
 				chatProxy.log("Redirecting to youtube chat from " + location.href);
-				location.href = "https://www.youtube.com/live_chat?v=QvCzql17aoQ";
+				location.href = "https://www.youtube.com/live_chat?v=a9soTa1UA2c";
 				return;
 			}
 

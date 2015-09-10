@@ -47,9 +47,11 @@ void YTChatProxy::log(const QString &msg)
 	qDebug() << QTime::currentTime() << "JavaScript:" << msg;
 }
 
-void YTChatProxy::chatMessage(const QString &msg)
+void YTChatProxy::chatMessage(const QByteArray &msg)
 {
-	qDebug() << QTime::currentTime() << QJsonDocument::fromJson(msg.toUtf8()).object();
+	QString s(QString::fromUtf8(msg));
+	qDebug() << QTime::currentTime() << s;
+	qDebug() << QTime::currentTime() << QJsonDocument::fromJson(msg).object();
 }
 
 void YTChatProxy::connectToChat()

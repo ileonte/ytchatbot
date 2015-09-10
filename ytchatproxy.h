@@ -2,6 +2,7 @@
 #define YTCHATPROXY_H
 
 #include <QObject>
+#include <QByteArray>
 #include <QVariant>
 
 class QWebEngineProfile;
@@ -26,7 +27,7 @@ public:
 	virtual ~YTChatProxy();
 
 	Q_INVOKABLE void log(const QString &msg);
-	Q_INVOKABLE void chatMessage(const QString &msg);
+	Q_INVOKABLE void chatMessage(const QByteArray &msg);
 	Q_SLOT void connectToChat();
 
 signals:
