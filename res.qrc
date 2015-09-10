@@ -8,5 +8,26 @@
         <file>ythelpers/offline.png</file>
         <file>ythelpers/online.png</file>
         <file>ythelpers/chatProxy/helper.js</file>
+        <file>ythelpers/fonts/Roboto/LICENSE.txt</file>
+        <file>ythelpers/fonts/Roboto/Roboto-Black.ttf</file>
+        <file>ythelpers/fonts/Roboto/Roboto-BlackItalic.ttf</file>
+        <file>ythelpers/fonts/Roboto/Roboto-Bold.ttf</file>
+        <file>ythelpers/fonts/Roboto/Roboto-BoldItalic.ttf</file>
+        <file>ythelpers/fonts/Roboto/Roboto-Italic.ttf</file>
+        <file>ythelpers/fonts/Roboto/Roboto-Light.ttf</file>
+        <file>ythelpers/fonts/Roboto/Roboto-LightItalic.ttf</file>
+        <file>ythelpers/fonts/Roboto/Roboto-Medium.ttf</file>
+        <file>ythelpers/fonts/Roboto/Roboto-MediumItalic.ttf</file>
+        <file>ythelpers/fonts/Roboto/Roboto-Regular.ttf</file>
+        <file>ythelpers/fonts/Roboto/Roboto-Thin.ttf</file>
+        <file>ythelpers/fonts/Roboto/Roboto-ThinItalic.ttf</file>
+        <file>ythelpers/fonts/AnonymousPro/Anonymous Pro B.ttf</file>
+        <file>ythelpers/fonts/AnonymousPro/Anonymous Pro BI.ttf</file>
+        <file>ythelpers/fonts/AnonymousPro/Anonymous Pro I.ttf</file>
+        <file>ythelpers/fonts/AnonymousPro/Anonymous Pro.ttf</file>
+        <file>ythelpers/fonts/AnonymousPro/FONTLOG.txt</file>
+        <file>ythelpers/fonts/AnonymousPro/OFL.txt</file>
+        <file>ythelpers/fonts/AnonymousPro/OFL-FAQ.txt</file>
+        <file>ythelpers/fonts/AnonymousPro/README.txt</file>
     </qresource>
 </RCC>
