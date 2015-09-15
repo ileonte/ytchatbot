@@ -59,8 +59,12 @@ void YTLoginProxy::loadFinished(bool ok)
 {
 	qDebug() << QTime::currentTime() <<"LOAD FINISHED " << ok << loginPage_->url().host().toLower();
 	if (ok) {
-		if (!operation_.isEmpty())
-			loginTimer_->start(2000);
+		if (!operation_.isEmpty()) {
+			if (operation_ == "testLogin")
+				runJSHelper();
+			else
+				loginTimer_->start(2000);
+		}
 	} else {
 		emit loginStatus(false);
 	}

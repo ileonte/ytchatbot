@@ -28,11 +28,13 @@ public:
 
 	Q_INVOKABLE void log(const QString &msg);
 	Q_INVOKABLE void chatMessage(const QByteArray &msg);
+	Q_INVOKABLE void emitCanChat(bool yesno);
 	Q_SLOT void connectToChat();
 
-signals:
+	Q_SIGNAL void newMessage(const QString &from, const QString &msg);
+	Q_SIGNAL void canChat(bool yesno);
 
-public slots:
+	Q_SIGNAL void sendMessage(const QString &msg);
 };
 
 #endif // YTCHATPROXY_H

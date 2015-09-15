@@ -61,7 +61,7 @@
 						loginProxy.signalLoginStatus(true);
 	                        else
 						loginProxy.signalLoginStatus(false);
-	                  } else {
+				} else if (location.href.match(/^qrc:\//)) {
 					loginProxy.log("Redirecting to youtube");
 					location.href = "https://www.youtube.com";
 					return;

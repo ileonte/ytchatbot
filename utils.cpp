@@ -1,3 +1,4 @@
+#include <QDir>
 #include <QFile>
 #include <QWebEngineProfile>
 #include <QStandardPaths>
@@ -19,11 +20,16 @@ QByteArray Utils::readFile(const QString &name)
 QWebEngineProfile *Utils::browerProfile(QObject *parent)
 {
 	QString loc = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+	QString cachePath = loc + "/Profiles/YoutubeProfile/WebCache";
+	QString dataPath = loc + "/Profiles/YoutubeProfile/WebData";
+
+	QDir(dataPath).remove("Visited Links");
+
 	qDebug() << "WRITABLE LOCATION" << loc;
 
 	auto profile = new QWebEngineProfile("YoutubeProfile", parent);
-	profile->setPersistentStoragePath(loc + "/Profiles/YoutubeProfile/WebData");
-	profile->setCachePath(loc + "/Profiles/YoutubeProfile/WebCache");
+	profile->setPersistentStoragePath(dataPath);
+	profile->setCachePath(cachePath);
 	profile->setHttpCacheType(QWebEngineProfile::DiskHttpCache);
 	profile->setPersistentCookiesPolicy(QWebEngineProfile::AllowPersistentCookies);
 

@@ -50,11 +50,20 @@ void YTChatProxy::log(const QString &msg)
 void YTChatProxy::chatMessage(const QByteArray &msg)
 {
 	QString s(QString::fromUtf8(msg));
-	qDebug() << QTime::currentTime() << s;
-	qDebug() << QTime::currentTime() << QJsonDocument::fromJson(msg).object();
+	QJsonObject obj(QJsonDocument::fromJson(msg).object());
+
+	if (!obj.value("deleted").toBool(false))
+		emit newMessage(obj.value("author").toString("authorNotSet"),
+				    obj.value("message").toString("messageNotSet"));
 }
 
 void YTChatProxy::connectToChat()
 {
 	chatPage_->load(QUrl("qrc:///ythelpers/empty.html"));
+}
+
+void YTChatProxy::emitCanChat(bool yesno)
+{
+	qDebug() << QTime::currentTime() << "CAN CHAT:" << yesno;
+	emit canChat(yesno);
 }
